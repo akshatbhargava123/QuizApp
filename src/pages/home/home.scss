@@ -1,0 +1,17 @@
+page-home {
+
+    text-align: center;
+
+    .scroll-content {
+        background: map-get($colors, 'light');
+    }
+
+    .card-header {
+        background: map-get($colors, 'primary');
+    }
+
+    b {
+        color: white;
+    }
+
+}

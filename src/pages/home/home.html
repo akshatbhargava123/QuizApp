@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>
+      Home
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+  
+<ion-content padding>
+  <ion-card *ngFor="let quiz of quizData" (click)="openQuiz(quiz)">
+    <ion-card-header text-wrap>
+      <h1><b>{{ quiz.title }}</b></h1>
+    </ion-card-header>
+    <ion-card-content padding text-wrap>
+      <p>
+        {{ quiz.description }}
+      </p>
+      <button ion-button block round outline>Open</button>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

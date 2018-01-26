@@ -1,0 +1,32 @@
+page-quiz {
+
+    ion-content {
+        background: #73C8A9;
+        background: -webkit-linear-gradient(to top, #373B44, rgb(115, 200, 169));
+        background: linear-gradient(to top, #373B44, #73C8A9);              
+    }
+
+    .swiper-pagination {
+        display: none;
+    }
+
+    ion-slide {
+        color: white;
+    }
+
+    .fab {
+        background: map-get($colors, 'quizGradientDarkColor');
+    }
+
+    .item {
+        border-radius: 18px 18px 18px 18px;
+        -moz-border-radius: 18px 18px 18px 18px;
+        -webkit-border-radius: 18px 18px 18px 18px;
+        border: .5px solid #73C8A9;
+    }
+
+    .input-wrapper {
+        text-align: center;
+    }
+
+}

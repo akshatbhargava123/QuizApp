@@ -1,0 +1,28 @@
+page-result {
+
+    .header {
+        text-align: center;
+    }
+
+    .scroll-content {
+        background: map-get($colors, 'light');
+    }
+
+    .item-divider {
+        background: map-get($colors, 'primary');
+        color: white;
+    }
+
+    .correctAns {
+        background: map-get($colors, 'secondary');
+    }
+
+    .wrongAns {
+        background: map-get($colors, 'failure');
+    }
+
+    .card-header {
+        background: map-get($colors, 'primary');
+    }
+
+}

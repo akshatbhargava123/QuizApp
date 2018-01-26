@@ -1,0 +1,61 @@
+<ion-header>
+  <ion-navbar color="quizGradientDarkColor">
+    <ion-title>{{ navParams.data.title }}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-fab bottom left *ngIf="currentQuestionNumber != 1">
+    <button ion-fab mini (click)="prevQuestion()">
+      <ion-icon name="ios-arrow-back"></ion-icon>
+    </button>
+  </ion-fab>
+
+  <ion-fab bottom right *ngIf="currentQuestionNumber != questions.length">
+    <button ion-fab mini (click)="nextQuestion()">
+      <ion-icon name="ios-arrow-forward"></ion-icon>
+    </button>
+  </ion-fab>
+
+  <ion-fab bottom right *ngIf="currentQuestionNumber == questions.length">
+    <button ion-fab mini (click)="finishQuiz()">
+      <ion-icon name="checkmark-circle-outline"></ion-icon>
+    </button>
+  </ion-fab>
+
+  <ion-slides pager (ionSlideDidChange)="updateCurQuestion()">
+    <ion-slide *ngFor="let question of questions; let i=index;">
+      <ion-grid>
+
+        <ion-row>
+            <ion-col col-3></ion-col>
+            <ion-col auto><h5>{{ question }}</h5></ion-col>
+            <ion-col col-3></ion-col>
+        </ion-row>
+
+        <ion-list no-lines>
+          <div *ngFor="let option of answers[i].options; let j=index;">
+            <ion-row>
+              <ion-col>
+                <button ion-item [color]="optionStates[i][j] ? 'defDark' : 'def'" (click)="checkAnswer(i, j)" text-wrap>
+                  <ion-icon name="radio-button-on" *ngIf="optionStates[i][j]" item-start small></ion-icon>
+                  {{ option }}
+                </button>
+              </ion-col>
+            </ion-row>
+          </div>
+        </ion-list>
+
+      </ion-grid>
+    </ion-slide>
+  </ion-slides>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar color="quizGradientDarkColor">
+    <ion-title text-center>
+      Question {{ currentQuestionNumber }} of {{ questions.length }}
+    </ion-title>
+  </ion-toolbar>
+</ion-footer>

@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>Summary - {{ title }}</ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="goHome()">
+        <ion-icon name="home"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-list>
+    <ion-item-group *ngFor="let question of questions; let i=index;">
+      <ion-item-divider color="light" text-wrap>{{ question }}</ion-item-divider>
+      <ion-item>
+        your answers:
+        <ion-list inset>
+          <div *ngFor="let option of optionStates[i]; let j=index;">
+            <div *ngIf="option">
+              <ion-item [ngClass]='{
+                "correctAns": j == answers[i].correct,
+                "wrongAns": j != answers[i].correct
+              }' text-wrap>
+                {{ answers[i].options[j] }}
+                <ion-icon name="{{ j == answers[i].correct ? 'checkmark' : 'close' }}" item-end></ion-icon>
+              </ion-item>
+            </div>
+          </div>
+        </ion-list>
+      </ion-item>
+      <ion-item>
+        correct answer:
+        <div padding text-wrap>
+          {{ answers[i].options[answers[i].correct] }}
+        </div>
+      </ion-item>
+    </ion-item-group>
+  </ion-list>
+
+  <ion-card>
+    <ion-card-header text-wrap style="color: white;">
+      Marks Scored (out of {{ questions.length }}):
+      <h1 padding-top><b style="color: white;">{{ totalCorrect }}</b></h1>
+    </ion-card-header>
+  </ion-card>
+
+</ion-content>
